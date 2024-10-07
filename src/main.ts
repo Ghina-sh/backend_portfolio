@@ -1,16 +1,22 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
+import { ExpressAdapter } from '@nestjs/platform-express';
+import express from 'express';
+
+const server = express();
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  app.enableCors();
-  app.setGlobalPrefix('api');
+  const app = await NestFactory.create(AppModule, new ExpressAdapter(server));
+  app.enableCors(); // Enable CORS for cross-origin requests
+  app.setGlobalPrefix('api'); // Set the global prefix for routes
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
-  const port = process.env.PORT || 3000;
-  await app.listen(port);
+  await app.init();
 }
 bootstrap();
+
+// Export server for Vercel's serverless function
+export default server;
 
 /*
 import { NestFactory } from '@nestjs/core';

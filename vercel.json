@@ -1,11 +1,21 @@
 {
-    "version": 2,
-    "routes": [
-      {
-        "src": "/(.*)",
-        "dest": "vercel-server.js"
-      }
-    ],
-    "outputDirectory": "dist"
-  }
-  
+  "version": 2,
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "dist/main.js"
+    }
+  ],
+  "env": {
+    "DATABASE_URL": "postgresql://postgres.fffucqpbruawwnjdxlpy:Ghina123$haraf@aws-0-eu-central-1.pooler.supabase.com:6543/postgres",
+    "DB_HOST": "aws-0-eu-central-1.pooler.supabase.com",
+    "DB_PORT": "6543",
+    "DB_USERNAME": "postgres.fffucqpbruawwnjdxlpy",
+    "DB_PASSWORD": "Ghina123$haraf",
+    "DB_DATABASE": "postgres",
+    "CLOUDINARY_CLOUD_NAME": "dur7hcytz",
+    "CLOUDINARY_API_SECRET": "rhJD_kZXN8Fsk2ZVGUM9Rajt-X4",
+    "CLOUDINARY_API_KEY": "245991958859448"
+  },
+  "outputDirectory": "dist"
+}
